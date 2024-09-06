@@ -1,7 +1,11 @@
 import pyttsx3  # this is a text-to-speech conversion library in Python.
-import speech_recognition as sr  # this is a speech recognition library in Python.
+# this is a speech recognition library in Python.
+import speech_recognition as sr
 import requests
 from bs4 import BeautifulSoup
+import datetime
+from time import sleep
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -56,6 +60,13 @@ if __name__ == "__main__":
                 elif "thank you" in query:
                     speak("You're welcome sir. How can I help you?")
 
+                elif "open" in query:
+                    from Dictapp import openappweb
+                    openappweb(query)
+                elif "close" in query:
+                    from Dictapp import closeappweb
+                    closeappweb(query)
+
                 elif "google" in query:
                     from SearchNow import searchGoogle
                     searchGoogle(query)
@@ -71,10 +82,12 @@ if __name__ == "__main__":
                     city = query.split(" ")[-1].strip()
                     temp = get_temperature(city)
                     if temp:
-                        speak(f"The current temperature in {city} is {temp} degrees Celsius.")
+                        speak(f"The current temperature in {
+                              city} is {temp} degrees Celsius.")
                     else:
-                        speak(f"Sorry, I couldn't retrieve the temperature for {city} at the moment.")
-                        
+                        speak(f"Sorry, I couldn't retrieve the temperature for {
+                              city} at the moment.")
+
                 elif "weather" in query:
                     from TemperatureWeather import get_weather
                     city = query.split(" ")[-1].strip()
@@ -82,9 +95,14 @@ if __name__ == "__main__":
                     if weather:
                         speak(f"The current weather in {city} is {weather} .")
                     else:
-                        speak(f"Sorry, I couldn't retrieve the weather for {city} at the moment.")
-                    
+                        speak(f"Sorry, I couldn't retrieve the weather for {
+                              city} at the moment.")
 
-        if 'exit' in query:
-            speak("Your desktop assistant is shutting down. Good bye! Have a nice day, sir.")
-            break
+                elif "time" in query:
+                    strTime = datetime.datetime.now().strftime("%H:%M")
+                    speak(f"Sir, the time is {strTime}")
+
+                elif 'exit' in query:
+                    speak(
+                        "Your desktop assistant is shutting down. Good bye! Have a nice day, sir.")
+                    break
