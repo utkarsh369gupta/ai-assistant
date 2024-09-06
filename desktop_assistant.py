@@ -1,6 +1,7 @@
 import pyttsx3  # this is a text-to-speech conversion library in Python.
-# this is a speech recognition library in Python.
-import speech_recognition as sr
+import speech_recognition as sr  # this is a speech recognition library in Python.
+import requests
+from bs4 import BeautifulSoup
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -33,7 +34,7 @@ def takeCommand():
 
 
 if __name__ == "__main__":
-    speak("Hello sir, your updated desktop assistant is in process. wake me up whenever you want me to assist you, sir?")
+    # speak("Hello sir, your updated desktop assistant is in process. wake me up whenever you want me to assist you, sir?")
     while True:
         query = takeCommand().lower()
         if 'wake up' in query:
@@ -65,7 +66,25 @@ if __name__ == "__main__":
                     from SearchNow import searchWikipedia
                     searchWikipedia(query)
 
+                elif "temperature" in query:
+                    from TemperatureWeather import get_temperature
+                    city = query.split(" ")[-1].strip()
+                    temp = get_temperature(city)
+                    if temp:
+                        speak(f"The current temperature in {city} is {temp} degrees Celsius.")
+                    else:
+                        speak(f"Sorry, I couldn't retrieve the temperature for {city} at the moment.")
+                        
+                elif "weather" in query:
+                    from TemperatureWeather import get_weather
+                    city = query.split(" ")[-1].strip()
+                    weather = get_weather(city)
+                    if weather:
+                        speak(f"The current weather in {city} is {weather} .")
+                    else:
+                        speak(f"Sorry, I couldn't retrieve the weather for {city} at the moment.")
+                    
+
         if 'exit' in query:
-            speak(
-                "Your desktop assistant is shutting down. Good bye! Have a nice day, sir.")
+            speak("Your desktop assistant is shutting down. Good bye! Have a nice day, sir.")
             break
