@@ -1,8 +1,8 @@
-# Jarvis - AI Assistant
+# Jarvis - Desktop Assistant
 
 ## Overview
 
-Jarvis is a personal AI assistant designed to help automate daily tasks, execute voice commands, and provide real-time assistance. It offers functionalities like app launching, task scheduling, password protection, internet speed check, system control, and entertainment features such as games, screenshots, camera access, and more.
+Jarvis is a personal Desktop assistant designed to help automate daily tasks, execute voice commands, and provide real-time assistance. It offers functionalities like app launching, task scheduling, password protection, internet speed check, system control, and entertainment features such as games, screenshots, camera access, and more.
 
 ## Features
 
