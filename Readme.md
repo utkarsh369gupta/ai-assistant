@@ -25,4 +25,4 @@ Jarvis is a personal Desktop assistant designed to help automate daily tasks, ex
 Make sure you have Python 3.x installed along with the following libraries:
 
 ```bash
-pip install pyttsx3 SpeechRecognition pywhatkit wikipedia googletrans playsound pyautogui speedtest-cli beautifulsoup4 requests plyer matplotlib Pillow pygame
+pip install -r requirements.txt
