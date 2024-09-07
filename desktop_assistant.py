@@ -1,10 +1,10 @@
 import pyttsx3  # this is a text-to-speech conversion library in Python.
-# this is a speech recognition library in Python.
 import speech_recognition as sr
 import requests
 from bs4 import BeautifulSoup
 import datetime
 from time import sleep
+import os
 
 
 engine = pyttsx3.init('sapi5')
@@ -17,7 +17,12 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
-
+def alarm(query):
+    timehere = open("Alarmtext.txt","a")
+    timehere.write(query)
+    timehere.close()
+    os.startfile("alarm.py")
+    
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -66,6 +71,13 @@ if __name__ == "__main__":
                 elif "close" in query:
                     from Dictapp import closeappweb
                     closeappweb(query)
+                    
+                elif "set an alarm" in query:
+                    print("input time example:- 10 and 10 and 10")
+                    speak("Set the time")
+                    a = input("Please tell the time :- ")
+                    alarm(a)
+                    speak("Done,sir")
 
                 elif "google" in query:
                     from SearchNow import searchGoogle
