@@ -6,6 +6,9 @@ import datetime
 from time import sleep
 import os
 import pyautogui
+import random
+import webbrowser
+
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -146,6 +149,17 @@ if __name__ == "__main__":
                 elif "what do you remember" in query:
                     remember = open("Remember.txt","r")
                     speak("You told me " + remember.read())
+                    
+                elif "tired" in query:
+                    speak("Playing your favourite songs, sir")
+                    a = (1,2,3)
+                    b = random.choice(a)
+                    if b==1:
+                        webbrowser.open("https://www.youtube.com/watch?v=mY9fNwGE7YA")
+                    elif b==2:
+                        webbrowser.open("https://www.youtube.com/watch?v=ZAp3xJ7GsY8")
+                    else:
+                        webbrowser.open("https://www.youtube.com/watch?v=b-_hHBcSQtc")
 
                 elif 'exit' in query:
                     speak(
