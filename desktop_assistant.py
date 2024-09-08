@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 import datetime
 from time import sleep
 import os
-
+import pyautogui
 
 engine = pyttsx3.init('sapi5')
 voices = engine.getProperty('voices')
@@ -17,12 +17,14 @@ def speak(audio):
     engine.say(audio)
     engine.runAndWait()
 
+
 def alarm(query):
-    timehere = open("Alarmtext.txt","a")
+    timehere = open("Alarmtext.txt", "a")
     timehere.write(query)
     timehere.close()
     os.startfile("alarm.py")
-    
+
+
 def takeCommand():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -65,13 +67,32 @@ if __name__ == "__main__":
                 elif "thank you" in query:
                     speak("You're welcome sir. How can I help you?")
 
+                elif "pause" in query:
+                    pyautogui.press("space")
+                    speak("Paused, Sir")
+                elif "play" in query:
+                    pyautogui.press("space")
+                    speak("Playing, Sir")
+                elif "mute" in query:
+                    pyautogui.press("m")
+                    speak("Muted, Sir")
+
+                elif "volume up" in query:
+                    from keyboard import volumeup
+                    speak("Turning volume up, sir")
+                    volumeup()
+                elif "volume down" in query:
+                    from keyboard import volumedown
+                    speak("Turning volume down, sir")
+                    volumedown()
+
                 elif "open" in query:
                     from Dictapp import openappweb
                     openappweb(query)
                 elif "close" in query:
                     from Dictapp import closeappweb
                     closeappweb(query)
-                    
+
                 elif "set an alarm" in query:
                     print("input time example:- 10 and 10 and 10")
                     speak("Set the time")
