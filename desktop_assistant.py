@@ -114,7 +114,7 @@ if __name__ == "__main__":
                     searchWikipedia(query)
                     
                 elif "news" in query:
-                    from NewsRead import latestnews
+                    from News import latestnews
                     latestnews()
                     
                 elif "calculate" in query:
