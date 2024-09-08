@@ -124,6 +124,10 @@ if __name__ == "__main__":
                     query = query.replace("jarvis","")
                     Calc(query)
                     
+                elif "whatsapp" in query:
+                    from Whatsapp import sendMessage
+                    sendMessage()
+                    
                 elif "temperature" in query:
                     from TemperatureWeather import get_temperature
                     city = query.split(" ")[-1].strip()
