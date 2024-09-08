@@ -134,6 +134,18 @@ if __name__ == "__main__":
                 elif "time" in query:
                     strTime = datetime.datetime.now().strftime("%H:%M")
                     speak(f"Sir, the time is {strTime}")
+                    
+                elif "remember that" in query:
+                    rememberMessage = query.replace("remember that","")
+                    rememberMessage = query.replace("jarvis","")
+                    speak("You told me to remember that"+rememberMessage)
+                    remember = open("Remember.txt","a")
+                    remember.write(rememberMessage)
+                    remember.close()
+                    
+                elif "what do you remember" in query:
+                    remember = open("Remember.txt","r")
+                    speak("You told me to remember that" + remember.read())
 
                 elif 'exit' in query:
                     speak(
