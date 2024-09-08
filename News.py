@@ -32,7 +32,7 @@ def latestnews():
 
     content = None
     url = None
-    # speak("Which field news do you want, [business] , [health] , [technology], [sports] , [entertainment] , [science]")
+    speak("Which field news do you want, [business] , [health] , [technology], [sports] , [entertainment] , [science]")
     field = input("Type field news that you want: ")
     for key, value in api_dict.items():
         if key.lower() in field.lower():
