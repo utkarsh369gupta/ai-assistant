@@ -27,5 +27,10 @@ Make sure you have Python 3.x installed along with the following libraries:
 ```bash
 pip install -r requirements.txt
 ```
+## Add API Key:
+In the assistant, you require to create your own two api key:
+1. openweather
+2. newsapi
 
+   
 Git Site page- https://utkarsh369gupta.github.io/ai-assistant/
