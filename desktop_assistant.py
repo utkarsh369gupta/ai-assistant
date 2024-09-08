@@ -138,14 +138,14 @@ if __name__ == "__main__":
                 elif "remember that" in query:
                     rememberMessage = query.replace("remember that","")
                     rememberMessage = query.replace("jarvis","")
-                    speak("You told me to remember that"+rememberMessage)
+                    speak("You told me "+rememberMessage)
                     remember = open("Remember.txt","a")
                     remember.write(rememberMessage)
                     remember.close()
                     
                 elif "what do you remember" in query:
                     remember = open("Remember.txt","r")
-                    speak("You told me to remember that" + remember.read())
+                    speak("You told me " + remember.read())
 
                 elif 'exit' in query:
                     speak(
